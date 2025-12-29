@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Note Merge (Codex Project)</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+
+    <!-- Stage Selection Screen -->
+    <div id="stageSelectScreen" class="stage-select">
+        <h1>🎵 Note Merge <span style="font-size:13px;font-weight:900;color:#6b7280;background:#f3f4f6;border-radius:999px;padding:7px 10px;">Stage Select</span></h1>
+        <p>
+            곡(스테이지)을 선택하면 해당 목표(수집해야 할 음표/쉼표)가 적용된 게임이 시작됩니다.<br/>
+            목표는 게임 상단 “스테이지 목표” 영역에 <b>4분음표 0/13</b> 같은 형태로 표시돼요.
+        </p>
+        <div id="stageGrid" class="stage-grid"></div>
+        <div style="margin-top:16px;color:#6b7280;font-weight:700;font-size:12px;">
+            ※ “손치기 발치기 / 남생아 놀아라 / 작은 별 / 도롱뇽” 목표는 아직 입력되지 않았어요(준비중 표시).
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="container hidden">
+        <div class="header">
+            <div class="title">🎵 Note Merge</div>
+            <div class="header-actions">
+                <button class="btn ghost" onclick="openStageSelect()">🎼 곡 선택</button>
+                <button class="btn" onclick="resetGame()">🔄 새게임</button>
+            </div>
+        </div>
+
+        <div class="info-bar">
+            <div class="info-box score-box">
+                🏆 <span id="score">0</span>점
+            </div>
+            <div class="info-box stage-box">
+                🎯 <span id="stageTitle" class="stage-title">-</span>
+            </div>
+            <div class="info-box next-box">
+                <span style="font-weight:900;">다음</span>
+                <div id="nextNote" class="next-note"></div>
+            </div>
+        </div>
+
+        
+        <div class="game-layout">
+          <div class="game-left">
+<div class="goals">
+            <div class="goals-title">
+                <span>🎯 스테이지 목표</span>
+                <span class="sub">수집: <span id="goalProgressText">0/0</span></span>
+            </div>
+            <div class="goals-list" id="goalsList"></div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="gameCanvas" width="400" height="600"></canvas>
+            <div id="overlay" class="overlay" style="display: none;"></div>
+        </div>
+
+        <div class="instructions">
+            <h3>게임 방법</h3>
+            <ul>
+                <li>• 캔버스를 클릭하여 음표/쉼표 풍선을 떨어뜨리세요</li>
+                <li>• 같은 종류(음표/쉼표) + 같은 길이끼리 합치면 더 긴 음가가 됩니다</li>
+                <li>• 상단 목표의 <b>0/목표</b>를 채우면 스테이지 클리어!</li>
+                <li>• 점선 위로 풍선이 쌓이면 게임 오버!</li>
+            </ul>
+        </div>
+    </div>
+          </div>
+          <div class="game-right">
+            <div class="score-panel">
+              <div class="score-panel-header">
+                <div class="score-title">🎼 새싹의 노래</div>
+                <div class="score-sub">기본은 연하게, 수집한 음표/쉼표는 진하게 표시됩니다.</div>
+              </div>
+              <div id="scoreSvgWrap" class="score-svg-wrap"></div>
+            </div>
+          </div>
+        </div>
+
+
+    
+  <!-- Vendor (OSMD). If you prefer local-only, download into /vendor and keep this tag. -->
+  <script src="./vendor/opensheetmusicdisplay.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
